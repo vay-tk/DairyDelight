@@ -1,9 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import colors from 'colors';
 import cors from 'cors';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -30,22 +28,12 @@ app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// Get current file's directory
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const _dirname = path.resolve();
 
-// Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'))
-  );
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running...');
-  });
-}
+app.use(express.static(path.join(_dirname, "/client/dist")));
+app.get('*', (req, res) =>{
+    res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"))
+});
 
 // Error middleware
 app.use(notFound);
