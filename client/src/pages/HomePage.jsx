@@ -17,7 +17,7 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <div className="pt-16">
+    <div className="">
       {/* Hero Banner */}
       {/* <div className="bg-primary-100 py-16 md:py-24">
         <div className="container-custom flex flex-col md:flex-row items-center">
