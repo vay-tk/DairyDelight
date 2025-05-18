@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/products/';
+const API_URL = 'https://dairydelight.onrender.com/api/products/';
 
 // Get all products
 const getProducts = async (keyword = '', pageNumber = '', category = '', minPrice = '', maxPrice = '') => {

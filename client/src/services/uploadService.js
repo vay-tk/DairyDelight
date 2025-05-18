@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/upload/';
+const API_URL = 'https://dairydelight.onrender.com/api/upload/';
 
 // Upload product image
 const uploadProductImage = async (formData, token) => {
