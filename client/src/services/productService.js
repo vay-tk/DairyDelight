@@ -1,6 +1,23 @@
 import axios from 'axios';
 
-const API_URL = 'https://dairydelight.onrender.com/api/products/';
+const API_URL = 'http://localhost:5000/api/products/';
+
+// Create product review
+const createProductReview = async (productId, reviewData, token) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(
+    API_URL + productId + '/reviews',
+    reviewData,
+    config
+  );
+  return response.data;
+};
 
 // Get all products
 const getProducts = async (keyword = '', pageNumber = '', category = '', minPrice = '', maxPrice = '') => {
@@ -86,6 +103,7 @@ const productService = {
   createProduct,
   updateProduct,
   deleteProduct,
+  createProductReview,
 };
 
 export default productService;
